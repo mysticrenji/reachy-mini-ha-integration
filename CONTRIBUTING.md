@@ -62,7 +62,7 @@ custom_components/reachy_mini/
 
 ## Integration with Reachy Mini SDK
 
-The integration uses the `reachy2-sdk-api` package to communicate with the Reachy Mini robot via gRPC. This is a lightweight package that provides protocol buffer interfaces without heavy dependencies like OpenCV.
+The integration uses the `reachy2-sdk-api` package to communicate with the Reachy Mini robot via gRPC. This is a lightweight package that provides protocol buffer interfaces without heavy dependencies like OpenCV, making it suitable for containerized deployments.
 
 Example usage:
 ```python
@@ -74,10 +74,13 @@ channel = grpc.insecure_channel(f'{host}:{port}')
 stub = reachy_pb2_grpc.ReachyServiceStub(channel)
 
 # Make gRPC calls to control the robot
-# (Specific implementation depends on the SDK API)
+# Example: Get robot info, control components, etc.
+# See the reachy2-sdk-api documentation for available services
 ```
 
-For high-level SDK usage (including image processing), you can optionally use the full `reachy2-sdk` package during development, but the integration should work with just the API package for production deployments.
+**Note on package choice:**
+- **`reachy2-sdk-api`** (required): Provides gRPC protocol buffer interfaces. Use this for the integration implementation.
+- **`reachy2-sdk`** (optional): High-level Python SDK with image processing and math utilities. Only needed for local development/testing if you need to process camera images or use advanced features. Do NOT add as a requirement to manifest.json as it has heavy dependencies (opencv-python, numpy) that prevent installation in containerized environments.
 
 ## Testing
 
