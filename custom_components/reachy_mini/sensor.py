@@ -14,7 +14,6 @@ from homeassistant.const import PERCENTAGE, UnitOfTemperature
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN
 
@@ -101,7 +100,8 @@ class ReachyMiniBatterySensor(ReachyMiniSensorBase):
         """Fetch new state data for the sensor."""
         try:
             # In a real implementation, you would get the actual battery level
-            # from the Reachy Mini SDK
+            # from the Reachy Mini SDK: battery = reachy.battery_level
+            # Placeholder value for testing purposes
             self._attr_native_value = 85
         except Exception as err:  # pylint: disable=broad-except
             _LOGGER.error("Error updating battery level: %s", err)
@@ -124,7 +124,8 @@ class ReachyMiniTemperatureSensor(ReachyMiniSensorBase):
         """Fetch new state data for the sensor."""
         try:
             # In a real implementation, you would get the actual temperature
-            # from the Reachy Mini SDK
+            # from the Reachy Mini SDK: temperature = reachy.temperature
+            # Placeholder value for testing purposes (typical operating temp)
             self._attr_native_value = 35.5
         except Exception as err:  # pylint: disable=broad-except
             _LOGGER.error("Error updating temperature: %s", err)
