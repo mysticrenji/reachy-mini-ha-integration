@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import logging
-from typing import Any
 
 from homeassistant.components.camera import Camera, CameraEntityFeature
 from homeassistant.config_entries import ConfigEntry
@@ -105,6 +104,8 @@ class ReachyMiniCamera(Camera):
             self.async_write_ha_state()
         except Exception as err:  # pylint: disable=broad-except
             _LOGGER.error("Error turning on camera: %s", err)
+            self._is_streaming = False
+            self.async_write_ha_state()
 
     async def async_turn_off(self) -> None:
         """Turn off the camera stream."""
@@ -116,3 +117,5 @@ class ReachyMiniCamera(Camera):
             self.async_write_ha_state()
         except Exception as err:  # pylint: disable=broad-except
             _LOGGER.error("Error turning off camera: %s", err)
+            self._is_streaming = False
+            self.async_write_ha_state()
