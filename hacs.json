@@ -1,0 +1,7 @@
+{
+  "name": "Reachy Mini",
+  "content_in_root": false,
+  "filename": "reachy_mini.zip",
+  "render_readme": true,
+  "homeassistant": "2023.1.0"
+}
