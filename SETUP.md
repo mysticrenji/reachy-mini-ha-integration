@@ -97,6 +97,13 @@ Once configured, the integration creates the following entities:
    - When ON: Motors are powered
    - When OFF: Motors are unpowered
 
+### Camera (1)
+
+1. **Teleop Camera** (`camera.reachy_mini_teleop_camera`)
+   - Live video feed from the robot's camera
+   - Supports streaming for real-time video viewing
+   - Can be added to Lovelace dashboards
+
 ## Usage Examples
 
 ### Dashboard Card
@@ -112,6 +119,28 @@ entities:
   - sensor.reachy_mini_temperature
   - switch.reachy_mini_compliance_mode
   - switch.reachy_mini_torque
+```
+
+### Camera View Card
+
+Add a camera feed to your dashboard:
+
+```yaml
+type: picture-entity
+entity: camera.reachy_mini_teleop_camera
+camera_view: live
+```
+
+Or use the camera directly in a glance card:
+
+```yaml
+type: glance
+title: Reachy Mini Overview
+entities:
+  - sensor.reachy_mini_battery_level
+  - switch.reachy_mini_compliance_mode
+  - camera.reachy_mini_teleop_camera
+camera_image: camera.reachy_mini_teleop_camera
 ```
 
 ### Automation Example

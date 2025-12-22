@@ -15,6 +15,9 @@ This is a custom Home Assistant integration for the Reachy Mini robot by Pollen 
 - **Compliance Mode**: Enable/disable compliance mode for manual manipulation
 - **Torque**: Enable/disable motor torque
 
+### Camera
+- **Teleop Camera**: Live video feed from the robot's camera with streaming support
+
 ## Installation
 
 ### Via HACS (recommended)

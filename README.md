@@ -15,6 +15,10 @@ This integration allows you to monitor and control your Reachy Mini robot throug
   - Compliance mode control
   - Torque enable/disable
 
+- **Camera**:
+  - Live camera feed from Reachy Mini's teleop camera
+  - Stream support for real-time video viewing
+
 ## Installation
 
 ### HACS Installation (Recommended)
@@ -56,6 +60,9 @@ Once configured, the integration will create:
 ### Switches
 - `switch.reachy_mini_compliance_mode` - Toggle compliance mode
 - `switch.reachy_mini_torque` - Toggle motor torque
+
+### Camera
+- `camera.reachy_mini_teleop_camera` - Live video feed from the robot's camera
 
 ## Requirements
 

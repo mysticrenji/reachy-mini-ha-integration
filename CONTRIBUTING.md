@@ -30,6 +30,7 @@ custom_components/reachy_mini/
 ├── manifest.json       # Integration metadata
 ├── sensor.py           # Sensor entities
 ├── switch.py           # Switch entities
+├── camera.py           # Camera entities
 ├── strings.json        # UI strings
 ├── icons.json          # Icon definitions
 └── translations/       # Localization files
@@ -51,6 +52,13 @@ custom_components/reachy_mini/
 2. Inherit from `ReachyMiniSwitchBase`
 3. Implement `async_turn_on` and `async_turn_off` methods
 4. Add to the switches list in `async_setup_entry`
+
+### Adding a New Camera
+
+1. Add camera class to `camera.py`
+2. Inherit from `Camera`
+3. Implement `async_camera_image` and `stream_source` methods
+4. Add to the cameras list in `async_setup_entry`
 
 ## Integration with Reachy Mini SDK
 
