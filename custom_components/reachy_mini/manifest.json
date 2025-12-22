@@ -1,0 +1,15 @@
+{
+  "domain": "reachy_mini",
+  "name": "Reachy Mini",
+  "codeowners": ["@mysticrenji"],
+  "config_flow": true,
+  "documentation": "https://github.com/mysticrenji/reachy-mini-ha-integration",
+  "issue_tracker": "https://github.com/mysticrenji/reachy-mini-ha-integration/issues",
+  "requirements": ["reachy2-sdk>=1.0.0"],
+  "ssdp": [],
+  "zeroconf": [],
+  "homekit": {},
+  "dependencies": [],
+  "iot_class": "local_polling",
+  "version": "1.0.0"
+}

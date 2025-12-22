@@ -1,0 +1,21 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up Reachy Mini",
+        "description": "Enter the connection details for your Reachy Mini robot.",
+        "data": {
+          "host": "Host (IP Address)",
+          "port": "Port"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect to Reachy Mini. Please check the host and port.",
+      "unknown": "An unknown error occurred."
+    },
+    "abort": {
+      "already_configured": "This Reachy Mini device is already configured."
+    }
+  }
+}
