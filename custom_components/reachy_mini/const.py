@@ -2,10 +2,6 @@
 
 DOMAIN = "reachy_mini"
 
-# Configuration
-CONF_HOST = "host"
-CONF_PORT = "port"
-
 # Defaults
 DEFAULT_PORT = 50055
 DEFAULT_NAME = "Reachy Mini"
