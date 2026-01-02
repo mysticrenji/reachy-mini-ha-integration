@@ -5,7 +5,10 @@
   "config_flow": true,
   "documentation": "https://github.com/mysticrenji/reachy-mini-ha-integration",
   "issue_tracker": "https://github.com/mysticrenji/reachy-mini-ha-integration/issues",
-  "requirements": ["reachy-mini>=1.0.0"],
+  "requirements": [
+    "opencv-python-headless>=4.8.0",
+    "reachy-mini>=1.0.0"
+  ],
   "ssdp": [],
   "zeroconf": [],
   "homekit": {},
