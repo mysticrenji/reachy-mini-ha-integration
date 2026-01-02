@@ -21,7 +21,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     hass.data.setdefault(DOMAIN, {})
     
     host = entry.data[CONF_HOST]
-    port = entry.data.get(CONF_PORT, 50055)
+    port = entry.data.get(CONF_PORT, 8000)  # Default to REST API port
     
     _LOGGER.info("Setting up Reachy Mini integration for %s:%s", host, port)
     

@@ -45,7 +45,7 @@ This integration allows you to monitor and control your Reachy Mini robot throug
 3. Search for "Reachy Mini"
 4. Enter your Reachy Mini connection details:
    - **Host**: IP address of your Reachy Mini robot
-   - **Port**: Port number (default: 50055)
+   - **Port**: Port number (default: 8000 for REST API)
 5. Click **Submit**
 
 ## Usage
@@ -68,9 +68,9 @@ Once configured, the integration will create:
 
 - Home Assistant 2023.1.0 or newer
 - Reachy Mini robot with network connectivity
-- Reachy Mini Python SDK API (automatically installed)
+- Reachy Mini Python SDK (automatically installed)
 
-> **Note**: This integration uses `reachy2-sdk-api` instead of the full `reachy2-sdk` package. The API package provides lightweight gRPC communication interfaces without heavy dependencies like OpenCV, making it suitable for containerized environments like Kubernetes. This ensures reliable installation across different deployment scenarios.
+> **Note**: This integration uses the `reachy-mini` SDK package. The robot uses a client-server architecture where the daemon runs on the robot (exposing a REST API on port 8000 and Zenoh messaging) and the SDK connects to it over the network.
 
 ## Support
 
