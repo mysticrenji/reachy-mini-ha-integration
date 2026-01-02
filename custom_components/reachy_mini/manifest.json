@@ -5,7 +5,7 @@
   "config_flow": true,
   "documentation": "https://github.com/mysticrenji/reachy-mini-ha-integration",
   "issue_tracker": "https://github.com/mysticrenji/reachy-mini-ha-integration/issues",
-  "requirements": ["reachy2-sdk-api>=1.0.21"],
+  "requirements": ["reachy-mini>=1.0.0"],
   "ssdp": [],
   "zeroconf": [],
   "homekit": {},

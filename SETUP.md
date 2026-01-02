@@ -60,7 +60,7 @@ You'll be prompted to enter:
 
 - **Host**: The IP address of your Reachy Mini
   - Example: `192.168.1.100`
-- **Port**: The port number (default: 50055)
+- **Port**: The port number (default: 8000)
   - Leave as default unless you've configured a different port
 
 Click **Submit** to complete the setup.

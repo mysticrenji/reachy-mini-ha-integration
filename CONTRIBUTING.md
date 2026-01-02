@@ -62,25 +62,45 @@ custom_components/reachy_mini/
 
 ## Integration with Reachy Mini SDK
 
-The integration uses the `reachy2-sdk-api` package to communicate with the Reachy Mini robot via gRPC. This is a lightweight package that provides protocol buffer interfaces without heavy dependencies like OpenCV, making it suitable for containerized deployments.
+The integration uses the `reachy-mini` SDK package to communicate with the Reachy Mini robot. The robot uses a **client-server architecture** where:
+
+- **The Daemon (Server)**: Runs on the robot, handles hardware I/O, and exposes a REST API (port 8000) and Zenoh messaging
+- **The SDK (Client)**: Connects to the daemon over the network
 
 Example usage:
 ```python
-from reachy2_sdk_api import reachy_pb2, reachy_pb2_grpc
-import grpc
+from reachy_mini import ReachyMini
+from reachy_mini.utils import create_head_pose
+import numpy as np
 
-# Connect to robot
-channel = grpc.insecure_channel(f'{host}:{port}')
-stub = reachy_pb2_grpc.ReachyServiceStub(channel)
-
-# Make gRPC calls to control the robot
-# Example: Get robot info, control components, etc.
-# See the reachy2-sdk-api documentation for available services
+# Connect to robot (daemon running on host:port)
+with ReachyMini(connection_mode="network") as mini:
+    # Get current state
+    state = mini.state
+    
+    # Move the head
+    mini.goto_target(
+        head=create_head_pose(z=10, roll=15, mm=True, degrees=True),
+        antennas=np.deg2rad([45, 45]),
+        duration=2.0
+    )
+    
+    # Get camera frame
+    frame = mini.media.get_frame()
+    
+    # Get sensor data
+    battery = state.get('battery_level')
 ```
 
-**Note on package choice:**
-- **`reachy2-sdk-api`** (required): Provides gRPC protocol buffer interfaces. Use this for the integration implementation.
-- **`reachy2-sdk`** (optional): High-level Python SDK with image processing and math utilities. Only needed for local development/testing if you need to process camera images or use advanced features. Do NOT add as a requirement to manifest.json as it has heavy dependencies (opencv-python, numpy) that prevent installation in containerized environments.
+**Alternative: REST API**
+For simpler integrations, you can use the REST API directly:
+```python
+import requests
+
+# Get full state
+response = requests.get(f'http://{host}:8000/api/state/full')
+state = response.json()
+```
 
 ## Testing
 
@@ -95,6 +115,13 @@ stub = reachy_pb2_grpc.ReachyServiceStub(channel)
 - Use type hints
 - Add docstrings to all functions and classes
 - Use async/await for all Home Assistant operations
+
+## SDK Resources
+
+- **GitHub**: https://github.com/pollen-robotics/reachy_mini
+- **PyPI**: https://pypi.org/project/reachy-mini/
+- **SDK Documentation**: See the SDK docs folder in the GitHub repo
+- **REST API**: `http://localhost:8000/docs` (when daemon is running)
 
 ## Submitting Changes
 

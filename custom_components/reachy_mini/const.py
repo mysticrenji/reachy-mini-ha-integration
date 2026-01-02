@@ -3,7 +3,7 @@
 DOMAIN = "reachy_mini"
 
 # Defaults
-DEFAULT_PORT = 50055
+DEFAULT_PORT = 8000  # REST API port (not 50055)
 DEFAULT_NAME = "Reachy Mini"
 
 # Update intervals
